@@ -1,94 +1,19 @@
-library(timevis)
-
-source("ui-helpers.R")
-
 fluidPage(
   shinydisconnect::disconnectMessage2(),
-  title = "timevis - An R package for creating timeline visualizations",
+  title = "Plano para os próximos meses",
   tags$head(
-    tags$link(href = "style.css", rel = "stylesheet"),
-
-    # Favicon
-    tags$link(rel = "shortcut icon", type="image/x-icon", href="https://daattali.com/shiny/img/favicon.ico"),
-
-    # Facebook OpenGraph tags
-    tags$meta(property = "og:title", content = share$title),
-    tags$meta(property = "og:type", content = "website"),
-    tags$meta(property = "og:url", content = share$url),
-    tags$meta(property = "og:image", content = share$image),
-    tags$meta(property = "og:description", content = share$description),
-
-    # Twitter summary cards
-    tags$meta(name = "twitter:card", content = "summary_large_image"),
-    tags$meta(name = "twitter:site", content = paste0("@", share$twitter_user)),
-    tags$meta(name = "twitter:creator", content = paste0("@", share$twitter_user)),
-    tags$meta(name = "twitter:title", content = share$title),
-    tags$meta(name = "twitter:description", content = share$description),
-    tags$meta(name = "twitter:image", content = share$image)
-  ),
-  tags$a(
-    href="https://github.com/daattali/timevis",
-    tags$img(style="position: absolute; top: 0; right: 0; border: 0;",
-             src="github-orange-right.png",
-             alt="Fork me on GitHub")
-  ),
+    tags$link(href = "style.css", rel = "stylesheet"),),
   div(id = "header",
     div(id = "title",
       "timevis"
     ),
     div(id = "subtitle",
-        "An R package for creating timeline visualizations"),
-    div(id = "subsubtitle",
-        "By",
-        tags$a(href = "https://deanattali.com/", "Dean Attali"),
-        HTML("&bull;"),
-        "Available",
-        tags$a(href = "https://github.com/daattali/timevis", "on GitHub"),
-        HTML("&bull;"),
-        tags$a(href = "https://github.com/sponsors/daattali", "Support my work"), "❤"
-    )
+        "De um amorzinho pro outro"),
   ),
   tabsetPanel(
     id = "mainnav",
     tabPanel(
-      div(icon("calendar"), "Basic timeline"),
-      timevisOutput("timelineBasic"),
-      div(
-        id = "samplecode",
-        fluidRow(
-          column(
-            6,
-            div(class = "codeformat",
-              "In R console or R markdown documents"),
-            tags$pre(codeConsole)
-          ),
-          column(
-            6,
-            div(class = "codeformat",
-                "In Shiny apps"),
-            tags$pre(codeShiny)
-          )
-        )
-      )
-    ),
-
-    tabPanel(
-      div(icon("cog"), "Custom style"),
-      timevisOutput("timelineCustom")
-    ),
-
-    tabPanel(
-      div(icon("trophy"), "World Cup 2014"),
-      timevisOutput("timelineWC")
-    ),
-
-    tabPanel(
-      div(icon("users"), "Groups"),
-      timevisOutput("timelineGroups")
-    ),
-
-    tabPanel(
-      div(icon("sliders-h"), "Fully interactive"),
+      div(icon("sliders-h"), "Interactive timeline"),
       fluidRow(
         column(
           8,
@@ -102,12 +27,9 @@ fluidPage(
                   class = "optionsSection",
                   tags$h4("Actions:"),
                   actionButton("fit", "Fit all items"),
-                  actionButton("setWindowAnim", "Set window 2016-01-07 to 2016-01-25"),
-                  actionButton("setWindowNoAnim", "Set window without animation"),
-                  actionButton("center", "Center around 2016-01-23"),
-                  actionButton("focus2", "Focus item 4"),
+                  actionButton("center", "Center around 2022-08-01"),
                   actionButton("focusSelection", "Focus current selection"),
-                  actionButton("addTime", "Add a draggable vertical bar 2016-01-17")
+                  actionButton("addTime", "Add a draggable vertical bar 2022-07-12")
               )
             )
           ),
@@ -124,7 +46,7 @@ fluidPage(
               4,
               div(class = "optionsSection",
                   textInput("addText", tags$h4("Add item:"), "New item"),
-                  dateInput("addDate", NULL, "2016-01-15"),
+                  dateInput("addDate", NULL, "2022-08-01"),
                   actionButton("addBtn", "Add")
               )
             ),
@@ -154,14 +76,5 @@ fluidPage(
         )
       )
     ),
-    tabPanel(
-      div(icon("question"), "Usage"),
-      div(id = "usage-tab", includeMarkdown("www/help.md"))
-    )
   ),
-  div(class = "sourcecode",
-      "The exact code for all the timelines in this app is",
-      tags$a(href = "https://github.com/daattali/timevis/tree/master/inst/example",
-             "on GitHub")
-  )
 )

@@ -8,7 +8,8 @@ data <- data.frame(
   start   = c("2022-08-10", "2022-08-13", "2022-08-29"),
   end     = c("2022-08-12", "2022-08-27", NA),
   group = c("admission", "documentary", "admission"),
-  type = c(rep("range", 2), "point")
+  type = c(rep("range", 2), "point"),
+  editable = TRUE
 )
 
 timevis(data)

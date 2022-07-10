@@ -1,11 +1,6 @@
-library(timevis)
-
-source("sampleData.R")
-source("utils.R")
-
 function(input, output, session) {
   output$timelineBasic <- renderTimevis({
-    timevis(dataBasic)
+    timevis(data)
   })
 
   output$timelineWC <- renderTimevis({
@@ -24,7 +19,7 @@ function(input, output, session) {
       snap = NULL,
       margin = list(item = 30, axis = 50)
     )
-    timevis(dataBasic, zoomFactor = 1, options = config)
+    timevis(data, zoomFactor = 1, options = config)
   })
 
   output$timelineInteractive <- renderTimevis({
@@ -32,7 +27,7 @@ function(input, output, session) {
       editable = TRUE,
       multiselect = TRUE
     )
-    timevis(dataBasic, options = config)
+    timevis(data, options = config)
   })
 
   output$visible <- renderText(
