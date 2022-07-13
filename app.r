@@ -1,9 +1,9 @@
 library(shiny)
 library(timevis)
-source("data.R")
-source("utils.R")
+source("data.r")
+source("utils.r")
 
 ui <- source("ui.R")
-server <- source("server.R")
+server <- source("server.r")
 
 shinyApp(ui = ui$value, server = server$value)
