@@ -1,14 +1,11 @@
 fluidPage(
   shinydisconnect::disconnectMessage2(),
-  title = "Plano para os próximos meses",
   tags$head(
     tags$link(href = "style.css", rel = "stylesheet"),),
   div(id = "header",
     div(id = "title",
       "timevis"
-    ),
-    div(id = "subtitle",
-        "De um amorzinho pro outro"),
+    )
   ),
   tabsetPanel(
     id = "mainnav",
